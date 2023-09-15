@@ -5,21 +5,21 @@ export const initialEdges = [
     target: "2",
 
     arrowHeadType: "arrowclosed",
-    style: { stroke: "black", strokeWidth: 2 },
+    style: { stroke: "#9C9CA1", strokeWidth: 2 },
   },
   {
     id: "e2-3",
     source: "2",
     target: "3",
     arrowHeadType: "arrowclosed",
-    style: { stroke: "black", strokeWidth: 2 },
+    style: { stroke: "9C9CA1", strokeWidth: 2 },
   },
   {
     id: "e3-4",
     source: "3",
     target: "4",
     arrowHeadType: "arrowclosed",
-    style: { stroke: "black", strokeWidth: 2 },
+    style: { stroke: "9C9CA1", strokeWidth: 2 },
   },
   {
     id: "e4-5",
@@ -27,7 +27,7 @@ export const initialEdges = [
     target: "5",
 
     arrowHeadType: "arrowclosed",
-    style: { stroke: "black", strokeWidth: 2 },
+    style: { stroke: "9C9CA1", strokeWidth: 2 },
   },
   {
     id: "e3-6",
@@ -35,7 +35,7 @@ export const initialEdges = [
     target: "6",
 
     arrowHeadType: "arrowclosed",
-    style: { stroke: "black", strokeWidth: 2 },
+    style: { stroke: "9C9CA1", strokeWidth: 2 },
   },
   {
     id: "e6-7",
@@ -44,7 +44,7 @@ export const initialEdges = [
     target: "7",
     targetHandle: "top",
     arrowHeadType: "arrowclosed",
-    style: { stroke: "black", strokeWidth: 2 },
+    style: { stroke: "9C9CA1", strokeWidth: 2 },
   },
   // {
   //   id: "e7-8",
@@ -53,7 +53,7 @@ export const initialEdges = [
   //   target: "8",
   //   targetHandle: "top",
   //   arrowHeadType: "arrowclosed",
-  //   style: { stroke: "black", strokeWidth: 2 },
+  //   style: { stroke: "9C9CA1", strokeWidth: 2 },
   // },
   // {
   //   id: "e8-9",
@@ -62,7 +62,7 @@ export const initialEdges = [
   //   target: "9",
   //   targetHandle: "top",
   //   arrowHeadType: "arrowclosed",
-  //   style: { stroke: "black", strokeWidth: 2 },
+  //   style: { stroke: "9C9CA1", strokeWidth: 2 },
   // },
   // {
   //   id: "e9-10",
@@ -71,7 +71,7 @@ export const initialEdges = [
   //   target: "10",
   //   targetHandle: "top",
   //   arrowHeadType: "arrowclosed",
-  //   style: { stroke: "black", strokeWidth: 2 },
+  //   style: { stroke: "9C9CA1", strokeWidth: 2 },
   // },
   {
     id: "e7-11",
@@ -81,6 +81,6 @@ export const initialEdges = [
     targetHandle: "top",
 
     arrowHeadType: "arrowclosed",
-    style: { stroke: "black", strokeWidth: 2 },
+    style: { stroke: "9C9CA1", strokeWidth: 2 },
   },
 ];

@@ -135,6 +135,7 @@ export const initialNodes = [
       height: 180,
       border: "2px solid black",
       borderRadius: "10px",
+      border : "1px solid white"
     },
   },
   {

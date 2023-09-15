@@ -1,9 +1,11 @@
-"use client"
+"use client";
 
+import { useTheme } from "../../themeContext";
 import React, { useState } from "react";
 
 function EditNode({ node, onSave, onCancel }) {
   const [editedLabel, setEditedLabel] = useState(node.data.label);
+  const { theme, toggleTheme } = useTheme();
 
   const handleLabelChange = (event) => {
     setEditedLabel(event.target.value);
@@ -27,10 +29,20 @@ function EditNode({ node, onSave, onCancel }) {
           value={editedLabel}
           onChange={handleLabelChange}
         />
-        <button className="blue-button mr-2 text-[12px]" onClick={handleSave}>
+        <button
+          className={`blue-button mr-2 text-[12px] ${
+            theme === "dark" && "blue-button-dark"
+          }`}
+          onClick={handleSave}
+        >
           Save
         </button>
-        <button className="gray-button text-[12px]" onClick={handleCancel}>
+        <button
+          className={`gray-button text-[12px] ${
+            theme === "dark" && "gray-button-dark"
+          }`}
+          onClick={handleCancel}
+        >
           Cancel
         </button>
       </div>

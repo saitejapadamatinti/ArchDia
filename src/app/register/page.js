@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -41,6 +41,7 @@ const RegisterForm = () => {
     }
 
     setTimeout(() => {
+      routeLogin();
       setFormData({
         firstName: "",
         lastName: "",
@@ -53,21 +54,21 @@ const RegisterForm = () => {
 
       toast.success("Registration successful!", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
       });
-    }, 2000);
+    }, 1000);
   };
 
   return (
-    <div className="relative h-screen mx-auto mt-10 overflow-hidden">
+    <div className="relative mx-auto overflow-hidden">
       <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
         <div className="w-full">
-          <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
+          <div className="block bg-white shadow-lg dark:bg-neutral-800">
             <div className="g-0 lg:flex lg:flex-wrap">
               <div className="px-4 md:px-0 lg:w-6/12">
                 <div className="md:mx-6 md:p-12">
                   <div className="text-center">
-                    <Image className="w-28 mx-auto" alt="logo" src={logo} />
+                    {/* <Image className="w-28 mx-auto" alt="logo" src={logo} /> */}
                     <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
                       Register an Account
                     </h4>
@@ -79,7 +80,7 @@ const RegisterForm = () => {
                     <div className="relative mb-4" data-te-input-wrapper-init>
                       <input
                         type="text"
-                        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder-opacity-100 data-[te-input-state-active]:placeholder-opacity-100 motion-reduce:transition-none dark:placeholder-text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder-opacity-0"
+                        className="peer block min-h-[auto] w-full  border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder-opacity-100 data-[te-input-state-active]:placeholder-opacity-100 motion-reduce:transition-none dark:placeholder-text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder-opacity-0"
                         id="firstName"
                         name="firstName"
                         value={formData.firstName}
@@ -169,7 +170,9 @@ const RegisterForm = () => {
                     <div className="relative mb-4" data-te-input-wrapper-init>
                       <input
                         type="password"
-                        className={`peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder-opacity-100 data-[te-input-state-active]:placeholder-opacity-100 motion-reduce:transition-none dark:placeholder-text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder-opacity-0 ${passwordMatchError ? "border-danger" : ""}`}
+                        className={`peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder-opacity-100 data-[te-input-state-active]:placeholder-opacity-100 motion-reduce:transition-none dark:placeholder-text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder-opacity-0 ${
+                          passwordMatchError ? "border-danger" : ""
+                        }`}
                         id="confirmPassword"
                         name="confirmPassword"
                         value={formData.confirmPassword}
@@ -195,7 +198,8 @@ const RegisterForm = () => {
                         data-te-ripple-init
                         data-te-ripple-color="light"
                         style={{
-                          background: "linear-gradient(to right, #33b5e5, #0099cc)",
+                          background:
+                            "linear-gradient(to right, #33b5e5, #0099cc)",
                         }}
                       >
                         Register
@@ -218,9 +222,7 @@ const RegisterForm = () => {
                 </div>
               </div>
 
-              <div
-                className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-green-400 to-blue-600"
-              >
+              <div className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-green-400 to-blue-600">
                 <div className="px-4 py-6 text-white md:mx-6 md:p-12">
                   <h4 className="mb-6 text-xl font-semibold">
                     Join Our Community

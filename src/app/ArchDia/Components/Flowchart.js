@@ -25,6 +25,8 @@ import NodeDetails from "./NodeDetails";
 import EditNode from "./EditNode";
 import { nodeTypes } from "./NodeTypes";
 import { useIfHorizontal } from "../constants/ifHorizontal";
+import Cookies from "js-cookie";
+import { useTheme } from "../../themeContext";
 
 export { initialNodes, initialEdges };
 
@@ -33,7 +35,6 @@ dagreGraph.setDefaultEdgeLabel(() => ({}));
 
 const getLayoutedElements = (nodes, edges, direction = "TB") => {
   const mediaQuery = window.matchMedia("(max-width: 768px)");
-  console.log(mediaQuery.matches);
 
   let nodeWidth = null;
   let nodeHeight = null;
@@ -55,9 +56,6 @@ const getLayoutedElements = (nodes, edges, direction = "TB") => {
       nodeHeight = 180;
     }
   }
-
-  console.log(nodeWidth);
-  console.log(nodeHeight);
 
   const isHorizontal = direction === "LR";
   dagreGraph.setGraph({ rankdir: direction });
@@ -114,6 +112,14 @@ function Flowchart() {
   const { ifHorizontal, setIfHorizontal } = useIfHorizontal();
 
   const [isMinMap, setIsminMap] = useState(false);
+  const [dark, setIsDark] = useState(false);
+
+  const { theme, toggleTheme } = useTheme();
+
+  console.log(theme);
+
+  const systemTheam = window.matchMedia("(prefers-color-scheme : dark").matches;
+  console.log(systemTheam);
 
   const onNodeContextMenu = useCallback(
     (event, node) => {
@@ -189,12 +195,9 @@ function Flowchart() {
     animated: true,
   };
 
-  const reactFlowStyle = {
-    backgroundImage: "linear-gradient(to bottom, #ffbebe, #b7e0ff)",
-    height: "300px",
-  };
-
   useEffect(() => {
+    const theam = Cookies.get("dark");
+
     let timer;
 
     if (showNodeDetails) {
@@ -208,12 +211,12 @@ function Flowchart() {
 
   return (
     <ReactFlowProvider>
-      <div className="h-[100vh] w-full border border-[#ccc] rounded-lg">
+      <div className="min-h-full w-full  dark:border-[#000] bg-red-500">
         <ReactFlow
           nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}
-          style={reactFlowStyle}
+          // style={reactFlowStyle}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           // onLoad={(instance) => setTimeout(() => instance.fitView(), 0)}
@@ -227,29 +230,41 @@ function Flowchart() {
           onNodeContextMenu={onNodeContextMenu}
           onNodeClick={onNodeClick}
           onNodeDoubleClick={onNodeDoubleClick}
+          className={
+            theme === "dark"
+              ? "bg-gradient-to-b from-[#030303] to-[#000000]"
+              : "bg-gradient-to-b from-[#ffbebe] to-[#b7e0ff]"
+          }
         >
           <Controls />
           <Panel position="top-right flex gap-1">
             <button
-              className=" border blue-button mr-3 text-[13px] p-[100px]"
+              className={`blue-button mr-3 text-[13px] ${
+                theme === "dark" && "blue-button-dark"
+              }`}
               onClick={() => onLayout("TB")}
             >
               vertical layout
             </button>
             <button
-              className="gray-button mr-3 text-[13px]"
+              className={`gray-button mr-3 text-[13px] ${
+                theme === "dark" && "gray-button-dark"
+              }`}
               onClick={() => onLayout("LR")}
             >
               horizontal layout
             </button>
             <button
-              className="gray-button mr-3 text-[13px] md:hidden"
+              className={`blue-button md:hidden mr-3 text-[13px] ${
+                theme === "dark" && "blue-button-dark"
+              }`}
               onClick={() => setIsminMap(!isMinMap)}
             >
               Minmap
             </button>
           </Panel>
           <MiniMap
+            style={{ backgroundColor: "#343435" }}
             className={isMinMap ? "md:flex" : "max-md:hidden"}
             nodeColor={(n) => {
               if (n.data.type === "input") return "blue";
@@ -275,7 +290,9 @@ function Flowchart() {
           />
         )}
         <Buttons />
-        <AddNode setNodes={setNodes} />
+        <div className={`h-auto ${theme === "dark" && "dark:bg-[#1e1e1e]"}`}>
+          <AddNode setNodes={setNodes} />
+        </div>
       </div>
     </ReactFlowProvider>
   );

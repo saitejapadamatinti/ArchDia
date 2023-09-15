@@ -4,6 +4,7 @@ import Navbar from "@/Components/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IfHorizontalProvider } from "./ArchDia/constants/ifHorizontal";
+import { ThemeProvider } from "./themeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-        <IfHorizontalProvider> {/* Wrap your layout with IfHorizontalProvider */}
+      <ThemeProvider>
+        <IfHorizontalProvider>
+          {" "}
+          {/* Wrap your layout with IfHorizontalProvider */}
           <Navbar />
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000} // Close after 3 seconds
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <main className="flex-grow mt-16">{children}</main>
         </IfHorizontalProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
